@@ -1,0 +1,45 @@
+1. Git là gì?
+- Là 1 hệ thống quản lý phiên bản phân tán (distributed version control system) giúp hỗ trợ quản lý code, lịch sử thay đổi và hỗ trợ làm việc nhóm đơn giản, thuận tiện hơn.
+2. Quản lý phiên bản phân tán là ntn?
+- Mỗi thành viên sẽ có 1 repository ở local và tất cả các thao tác như commit, add ,… đều làm việc trực tiếp với nó giống như bản nó vừa là client vừa là 1 server. Các thành viên trong local có thể share trực tiếp với nhau thông qua share SSH. Và nó cũng hoạt động được với kiến trúc client-server như trong quản lý phiên bản tập trung
+- Repository được phân tán ở mọi Client đưa đến các lợi ích như: dễ dàng khôi phục repos từ các máy client khi máy chủ sập còn theo mô hình tập trung thì repos chỉ lưu trên server → khi server gặp sự cố sẽ dẫn đến toàn bộ dự án bị ngừng.
+3. Quản lý phiên bản tập trung là ntn?
+- Là mô hình sử dụng kiến trúc Client-Server trong đó Server chứa tất cả các file phiên bản , hiện tại của dự án và lịch sử các thay đổi chỉnh sửa trên cá file đó. Các Client kết nối tới server để lấy về 1 phiên bản copy đầy đủ dự án (check out) hoặc cập nhật những thay đổi mới nhất từ dự án (update), làm việc trên phiên bản đó và sao lưu lại những thay đổi của họ (commit)
+- Client và Server có thể kết nối thông qua mạng LAN hoặc internet, Client và server có th cùng
+chạy trên 1 máy nếu CVS có nhiệm vụ về lịch sử của dự án do các nhà phát triển phần mềm phát triển trong nội bộ.
+- Phần mềm server thường chạy trên Unix trong khi CVS Client có thể chạy trên nhiều hệ điều hành khác nhau
+4. Tại sao nên dùng Git
+- Git hỗ trợ quản lý code và lịch sử thay đổi, giúp làm việc nhóm đơn giản thuận tiện như các hệ thống VCS khác hiện nay nhưng điểm khác biệt  khác được coi là lợi thế khi chọn Git mà các VCS khác ko có đó là:
++ Tiếp cận theo hướng phân tán
++ Khả năng tách nhánh (branch)
+- Ngoài ra Git còn đem đến các lợi ích:
++ Sắp xếp công việc tốt hơn: Có thể tập trung giải quyết từng task mà k phải bận tâm lo lắng cho các task liên quan
++ Linh hoạt hơn khi phải làm cùng lúc nhiều task nhờ cấu trúc công việc mạch lạc rõ ràng
++ Tự tin hơn khi thử nghiệm những ý tưởng mới vì có thể tách biệt việc thử nghiệm với dự án chính giúp nâng cao chất lượng code và tính sáng tạo
+- Miễn phí
+5. So sánh Git vs SVN:
+- Git cho phép làm việc offline trong 1 khoảng thời gian và chỉ cần internet cho nhu cầu hợp tác nhóm hoặc lưu lịch sử commit code lên remote repos. Ngược lại SVN mỗi khi sử dụng đều cần có kết nối đến máy chủ SVN
+- Khi tách nhánh, Git chỉ sử dụng 41 bytes cho 1 nhánh mới giúp tiết kiệm không gian lưu trữ mà vẫn đảm bảo tốt nhu cầu công việc. Còn SVN sẽ copy toàn bộ source code thành 1 bản mới khi tách nhánh
+- Git có cách quản lý storage tối ưu và lưu trữ thông tin mà người dùng có thể thực hiện vô vàn những điều thú vị để viết lại lịch sử commit
+- Git giúp việc checkout và merge code đơn giản hơn SVN nhờ chức năng tách nhánh phức tạp
+6. Phân biệt
+7. Các câu lệnh cơ bản:
+- init: git init
+	+ Lênh này sẽ tạo 1 thư mục mới có tên .git, thư mục này chứa tất cả các tập tin cần thiết cho kho chứa
+- remote: git remote
++ lệnh này liệt kê các máy chủ mà người dùng đã cấu hình
+- add: git add .
++ cập nhật lên staging area các files đã chỉnh sửa
+- commit: git commit -m “Message”
++ Thông tin thay đổi đưa lên Local Repository
+- pull: git pull origin master
+lệnh trên gộp những thay đổi mới keó về từ server với nhánh hiện tại trên máy local
+- push: git push origin <name_branch>
+cập nhật thông tin lên Server (sử dụng sau lệnh commit)
+- branch: git branch
++ dùng để kiểm tra các branch hiện tại
++ Tạo mới 1 branch: git branch <tên branch>
++ Chuyển và tạo mới: git branch -b <tên branch>
+- merge: git merge
++ Tích hợp các thay đổi của 1 nhánh vào nhánh master
+
